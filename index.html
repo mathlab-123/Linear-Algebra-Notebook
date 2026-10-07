@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M3 Linear Algebra — Interactive Course Laboratory</title>
+  <link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="home">
+
+  <main class="home-wrap">
+    <!-- Hero Banner with Welcome Image -->
+    <div class="home-hero">
+      <img src="assets/img/welcome.jpg" alt="Welcome to Linear Algebra &amp; Jupyter Notebooks">
+      <div class="overlay">
+        <span class="tag">Newton School of Technology · Batch 2026–27</span>
+        <h1>Mathematics-3: Linear Algebra Interactive Laboratory</h1>
+        <p>Bridging pure algebraic notation and visual geometry through real-time interactive simulations, 3D rotatable spaces, acoustic wave superposition, and digital pixel processing.</p>
+      </div>
+    </div>
+
+    <!-- Featured Jupyter Showcase Banner -->
+    <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 14px; padding: 26px 30px; margin: 28px 0; color: #fff; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.25); border: 1px solid #334155; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 280px;">
+        <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(56, 189, 248, 0.15); border: 1px solid #0284c7; color: #38bdf8; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">
+          <span>🪐 Primary Showcase Medium</span>
+        </div>
+        <h2 style="margin: 0 0 8px 0; color: #ffffff; font-size: 24px; font-weight: 800;">LA_Notebook_1.ipynb Interactive Showcase</h2>
+        <p style="margin: 0; color: #cbd5e1; font-size: 14.5px; line-height: 1.6;">
+          Display the authentic 94-cell lecture notebook in your browser with cell-by-cell execution, full KaTeX mathematical typesetting, and 20 embedded live laboratory widgets that solve the broken ipywidgets problem without requiring local Python or Jupyter servers.
+        </p>
+      </div>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+        <a href="notebook.html" class="btn primary" style="padding: 12px 22px; font-size: 15px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+          <span>🚀 Open Jupyter Showcase</span>
+        </a>
+        <a href="LA_Notebook_1.ipynb" download class="btn ghost" style="padding: 12px 18px; font-size: 14px; text-decoration: none; border: 1px solid #475569; color: #e2e8f0; display: inline-flex; align-items: center; gap: 6px;">
+          <span>📥 Download .ipynb</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Student Toolkit & Quick Utilities -->
+    <div class="toolkit-section">
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+        <h2 style="margin:0;">Student Interactive Toolkit</h2>
+        <span class="muted" style="font-size:13.5px;">Click any tool for instant modal popup anywhere across all pages</span>
+      </div>
+      <div class="toolkit-grid">
+        <div class="toolkit-card" onclick="LA.openSandbox()">
+          <div class="tk-icon">🧮</div>
+          <div class="tk-title">
+            <span>Matrix Sandbox</span>
+            <span class="tk-badge">Live Solver</span>
+          </div>
+          <p class="tk-desc">Solve any 2×2 or 3×3 linear system $Ax=b$, diagnose rank &amp; determinant, and visualize planes in real-time 3D.</p>
+        </div>
+
+        <div class="toolkit-card" onclick="LA.openFormula()">
+          <div class="tk-icon">📐</div>
+          <div class="tk-title">
+            <span>Formula Sheet</span>
+            <span class="tk-badge">Exam Reference</span>
+          </div>
+          <p class="tk-desc">Quick cheat sheet of the Trichotomy theorem, 4 views of matrix multiplication, 10 vector axioms, and span tests.</p>
+        </div>
+
+        <div class="toolkit-card" onclick="LA.openFlashcards()">
+          <div class="tk-icon">🗂️</div>
+          <div class="tk-title">
+            <span>Review Flashcards</span>
+            <span class="tk-badge">10 3D Cards</span>
+          </div>
+          <p class="tk-desc">Interactive 3D flip cards for active recall practice, self-scoring mastery tracker, and exam preparation.</p>
+        </div>
+
+        <div class="toolkit-card" onclick="LA.openSearch()">
+          <div class="tk-icon">🔍</div>
+          <div class="tk-title">
+            <span>Universal Search</span>
+            <span class="tk-badge">Shortcut: /</span>
+          </div>
+          <p class="tk-desc">Instant real-time search across all 22 interactive visual labs and all 94 notebook cells.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course Modules Grid -->
+    <h2>Explore Course Modules</h2>
+    <p class="muted">Each module brings the lecture notebook to life with interactive parameter sliders, 3D mouse-rotatable visualizers, self-check quizzes, and browser-executable Python code labs.</p>
+
+    <div class="module-cards">
+      <!-- Module 1 -->
+      <a href="module1.html" class="module-card">
+        <div class="mc-top">
+          <span class="mc-num">Module 01</span>
+          <span class="mc-icon">📐</span>
+        </div>
+        <h3>System of Linear Equations</h3>
+        <p>From points, lines, and planes to the fundamental Trichotomy theorem and the Row-vs-Column Dual-Verse.</p>
+        <div class="mc-labs">
+          <span>Linearity Rate of Change</span>
+          <span>2D Intersections</span>
+          <span>6 Sheet 1 Configurations</span>
+          <span>3D Planes Solver</span>
+          <span>Dual-Verse Explorer</span>
+        </div>
+        <div class="mc-prog">
+          <div class="bar"><i></i></div>
+          <small>Explore Module 1 →</small>
+        </div>
+      </a>
+
+      <!-- Module 2 -->
+      <a href="module2.html" class="module-card">
+        <div class="mc-top">
+          <span class="mc-num">Module 02</span>
+          <span class="mc-icon">🍵</span>
+        </div>
+        <h3>Matrix Multiplication</h3>
+        <p>Move beyond entry-by-entry recipes into light synthesis, audio superposition, canteen menus, and digital pixel transformations.</p>
+        <div class="mc-labs">
+          <span>RGB Light Synthesis</span>
+          <span>Bach + MLK Audio Studio</span>
+          <span>Dimension Compatibility</span>
+          <span>Mul-Tea-Plication Kitchen</span>
+          <span>Binary Image PXQ Studio</span>
+        </div>
+        <div class="mc-prog">
+          <div class="bar"><i></i></div>
+          <small>Explore Module 2 →</small>
+        </div>
+      </a>
+
+      <!-- Module 3 -->
+      <a href="module3.html" class="module-card">
+        <div class="mc-top">
+          <span class="mc-num">Module 03</span>
+          <span class="mc-icon">🏹</span>
+        </div>
+        <h3>Vectors and their Properties</h3>
+        <p>The three perspectives (Physics, CS, Math), vector space axioms, continuous subspace spans, and the Linear Alchemist game.</p>
+        <div class="mc-labs">
+          <span>Free Vector Invariance</span>
+          <span>Head-to-Tail vs Parallelogram</span>
+          <span>2D Continuous Span</span>
+          <span>3D Subspace Rotator</span>
+          <span>Linear Alchemist Game</span>
+        </div>
+        <div class="mc-prog">
+          <div class="bar"><i></i></div>
+          <small>Explore Module 3 →</small>
+        </div>
+      </a>
+    </div>
+
+    <!-- Features -->
+    <h2>Why This Interactive Lab?</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="ic">⚡</div>
+        <h4>Zero Setup Required</h4>
+        <p>Runs natively in any standard web browser without needing Jupyter servers, Python installations, or cloud kernels.</p>
+      </div>
+      <div class="feature">
+        <div class="ic">🎮</div>
+        <h4>Touch &amp; Drag Intuition</h4>
+        <p>Interact with lines, vectors, and 3D planes directly to build physical geometric intuition behind mathematical notation.</p>
+      </div>
+      <div class="feature">
+        <div class="ic">🎵</div>
+        <h4>Acoustic &amp; Visual Physics</h4>
+        <p>Listen to actual audio waveform superposition and watch light beams synthesize new colors through linear combinations.</p>
+      </div>
+      <div class="feature">
+        <div class="ic">🧠</div>
+        <h4>Self-Check &amp; Coding Labs</h4>
+        <p>Interactive conceptual questions, persistent study notes, and browser-based Python code puzzles with automated verification.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    Newton School of Technology · Course in Linear Algebra (Mathematics-3) · Interactive Companion Laboratory
+  </footer>
+
+  <script src="assets/vendor/katex/katex.min.js"></script>
+  <script src="assets/vendor/katex/auto-render.min.js"></script>
+  <script src="assets/vendor/plotly.min.js"></script>
+  <script src="assets/js/core.js"></script>
+</body>
+</html>

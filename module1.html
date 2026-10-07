@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 1: System of Linear Equations · M3 Interactive Lab</title>
+  <link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="m1">
+
+  <div class="layout">
+    <!-- Sticky Table of Contents -->
+    <aside class="toc" id="toc"></aside>
+
+    <!-- Main Content Area -->
+    <main class="content">
+
+      <!-- Module Hero -->
+      <header class="module-hero">
+        <span class="eyebrow">MODULE 01</span>
+        <h1>System of Linear Equations</h1>
+        <p>Bridging pure algebraic notation and visual geometry. Train your mind to instantly "see" the geometric shape behind sets of equations.</p>
+        <div class="hero-goals">
+          <div>🎯 <b>Geometric Foundations:</b> Points, lines, and planes across dimensions.</div>
+          <div>🎯 <b>Theorem 1 (Trichotomy):</b> Why linear systems only have 0, 1, or ∞ solutions.</div>
+          <div>🎯 <b>The Dual-Verse:</b> Unifying the Row Picture and Column Picture of $A\mathbf{x} = \mathbf{b}$.</div>
+        </div>
+      </header>
+
+      <!-- Section 1 -->
+      <section class="chapter" id="sec-1" data-title="Foundations &amp; Linearity">
+        <h2><span class="num">1</span> What is a Point, Line, and Plane?</h2>
+        <p>In $\mathbb{R}^n$, a <b>point</b> is an exact location in space, devoid of size or width: an ordered coordinate pair $(x, y)$. A <b>line</b> is a 1D continuous set of points extending infinitely in opposite directions. A <b>plane</b> is a flat 2D surface extending infinitely with zero thickness.</p>
+
+        <div class="callout def">
+          <div class="callout-title">Linear Equation in Two Variables</div>
+          <p>An algebraic equation that can be written in standard form:
+            $$ax + by = c$$
+            where $x$ and $y$ are indeterminates, $a, b, c \in \mathbb{R}$, and $a$ and $b$ are not both zero.
+          </p>
+        </div>
+
+        <div class="callout ponder" data-ponder="m1-p1">
+          <div class="callout-title">🤔 Stop &amp; Ponder: What makes an equation "Linear"?</div>
+          <p>Why is $x + y = 2$ called linear? Compare the uniformity of values of $y$ after uniform steps along $x$. Is $\sin(x) + \sin(y) = 1$ linear?</p>
+          <div class="reveal" data-label="See Linearity Insight">
+            <div class="reveal-label">Key Conceptual Takeaway</div>
+            <p>For $x + y = 2$, the rate of change $\frac{\Delta y}{\Delta x} = -1$ is strictly constant everywhere. In contrast, for $\sin(x) + \sin(y) = 1$, the slope fluctuates continuously, producing curves rather than straight lines.</p>
+          </div>
+        </div>
+
+        <!-- Interactive Lab 1.1 -->
+        <div id="lab-linearity"></div>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="chapter" id="sec-2" data-title="2×2 Linear Systems">
+        <h2><span class="num">2</span> System of Linear Equations in 2 Variables</h2>
+        <p>A system of linear equations is a collection of two or more linear equations involving the same set of variables:</p>
+        $$\begin{aligned}
+        a_1x + b_1y &= c_1 \\
+        a_2x + b_2y &= c_2
+        \end{aligned}$$
+        <p>A <b>solution</b> is an ordered pair $(x, y)$ that satisfies every equation simultaneously.</p>
+
+        <!-- Interactive Lab 1.2 -->
+        <div id="lab-2x2-intersection"></div>
+
+        <!-- Interactive Lab 1.3 -->
+        <div id="lab-2d-simulator"></div>
+
+        <!-- Theorem 1 2D Visual Matrix (Native Vector Component - replaces external raster) -->
+        <div class="state-matrix-container">
+          <div class="state-matrix-header">
+            <h3>Theorem 1 Visual Matrix: The Three Geometric States in ℝ²</h3>
+            <p class="muted" style="margin:0; font-size:14px;">Every 2D linear system $a_1x + b_1y = c_1$ and $a_2x + b_2y = c_2$ falls strictly into one of three universal solvability categories:</p>
+          </div>
+
+          <div class="state-matrix-grid">
+            <!-- 1. Unique Solution -->
+            <div class="state-card good">
+              <div class="state-card-header">
+                <span class="state-card-title">1. Unique Solution</span>
+                <span class="state-card-badge">Consistent · Independent</span>
+              </div>
+              <div class="state-svg-wrap">
+                <svg width="240" height="150" viewBox="0 0 240 150">
+                  <defs>
+                    <pattern id="grid1" width="20" height="20" patternUnits="userSpaceOnUse">
+                      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(148,163,184,0.22)" stroke-width="1"/>
+                    </pattern>
+                  </defs>
+                  <rect width="240" height="150" fill="url(#grid1)"/>
+                  <line x1="20" y1="75" x2="220" y2="75" stroke="#94a3b8" stroke-width="1.5"/>
+                  <line x1="120" y1="15" x2="120" y2="135" stroke="#94a3b8" stroke-width="1.5"/>
+                  <line x1="40" y1="125" x2="200" y2="25" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+                  <line x1="40" y1="20" x2="200" y2="130" stroke="#ea580c" stroke-width="3" stroke-linecap="round"/>
+                  <circle cx="120" cy="75" r="5.5" fill="#f59e0b" stroke="#ffffff" stroke-width="2"/>
+                  <text x="185" y="24" fill="#2563eb" font-size="11" font-weight="bold">Line 1</text>
+                  <text x="185" y="142" fill="#ea580c" font-size="11" font-weight="bold">Line 2</text>
+                  <text x="128" y="70" fill="#0f172a" font-size="11" font-weight="800">Point (x*, y*)</text>
+                </svg>
+              </div>
+              <div class="state-cond-box">
+                <b>Condition:</b> $\frac{a_1}{a_2} \neq \frac{b_1}{b_2}$ (Unequal slopes)<br>
+                <b>Rank:</b> $\text{rank}(A) = \text{rank}([A|b]) = 2$<br>
+                <b>Geometry:</b> Lines cross at exactly 1 unique coordinate point.
+              </div>
+            </div>
+
+            <!-- 2. No Solution -->
+            <div class="state-card bad">
+              <div class="state-card-header">
+                <span class="state-card-title">2. No Solution</span>
+                <span class="state-card-badge">Inconsistent · Independent</span>
+              </div>
+              <div class="state-svg-wrap">
+                <svg width="240" height="150" viewBox="0 0 240 150">
+                  <defs>
+                    <pattern id="grid2" width="20" height="20" patternUnits="userSpaceOnUse">
+                      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(148,163,184,0.22)" stroke-width="1"/>
+                    </pattern>
+                  </defs>
+                  <rect width="240" height="150" fill="url(#grid2)"/>
+                  <line x1="20" y1="75" x2="220" y2="75" stroke="#94a3b8" stroke-width="1.5"/>
+                  <line x1="120" y1="15" x2="120" y2="135" stroke="#94a3b8" stroke-width="1.5"/>
+                  <line x1="30" y1="95" x2="210" y2="25" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+                  <line x1="30" y1="135" x2="210" y2="65" stroke="#ea580c" stroke-width="3" stroke-linecap="round"/>
+                  <text x="175" y="20" fill="#2563eb" font-size="11" font-weight="bold">Line 1</text>
+                  <text x="175" y="60" fill="#ea580c" font-size="11" font-weight="bold">Line 2</text>
+                  <text x="80" y="125" fill="#ef4444" font-size="10.5" font-weight="bold">Parallel Disjoint (∅)</text>
+                </svg>
+              </div>
+              <div class="state-cond-box">
+                <b>Condition:</b> $\frac{a_1}{a_2} = \frac{b_1}{b_2} \neq \frac{c_1}{c_2}$ (Equal slopes, distinct intercepts)<br>
+                <b>Rank:</b> $\text{rank}(A) = 1 < \text{rank}([A|b]) = 2$<br>
+                <b>Geometry:</b> Parallel lines never meet anywhere in $\mathbb{R}^2$.
+              </div>
+            </div>
+
+            <!-- 3. Infinite Solutions -->
+            <div class="state-card warn">
+              <div class="state-card-header">
+                <span class="state-card-title">3. Infinite Solutions</span>
+                <span class="state-card-badge">Consistent · Dependent</span>
+              </div>
+              <div class="state-svg-wrap">
+                <svg width="240" height="150" viewBox="0 0 240 150">
+                  <defs>
+                    <pattern id="grid3" width="20" height="20" patternUnits="userSpaceOnUse">
+                      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(148,163,184,0.22)" stroke-width="1"/>
+                    </pattern>
+                  </defs>
+                  <rect width="240" height="150" fill="url(#grid3)"/>
+                  <line x1="20" y1="75" x2="220" y2="75" stroke="#94a3b8" stroke-width="1.5"/>
+                  <line x1="120" y1="15" x2="120" y2="135" stroke="#94a3b8" stroke-width="1.5"/>
+                  <line x1="30" y1="120" x2="210" y2="35" stroke="#2563eb" stroke-width="4.5" stroke-linecap="round"/>
+                  <line x1="30" y1="120" x2="210" y2="35" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="6,4" stroke-linecap="round"/>
+                  <text x="130" y="30" fill="#2563eb" font-size="11" font-weight="bold">Line 1 ≡ Line 2</text>
+                  <text x="65" y="65" fill="#d97706" font-size="10.5" font-weight="bold">Coincident (∞ Points)</text>
+                </svg>
+              </div>
+              <div class="state-cond-box">
+                <b>Condition:</b> $\frac{a_1}{a_2} = \frac{b_1}{b_2} = \frac{c_1}{c_2}$ (Proportional equations)<br>
+                <b>Rank:</b> $\text{rank}(A) = \text{rank}([A|b]) = 1 < 2$<br>
+                <b>Geometry:</b> Lines lie directly on top of each other.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="chapter" id="sec-3" data-title="Moving to 3 Variables">
+        <h2><span class="num">3</span> Moving to 3 Variables: What Does $x + y + z = 1$ Represent?</h2>
+        <p>In two dimensions, $x + y = 2$ represents a 1D straight line. When we introduce a third indeterminate variable:</p>
+        $$x + y + z = 1$$
+        <p>Geometrically, this equation defines a flat <b>2D plane slicing through 3-dimensional space ($\mathbb{R}^3$)</b>.</p>
+
+        <p>Consider the three-equation system from Sheet 1:</p>
+        $$\begin{cases}
+        x + y + z = 1 \\
+        2x + 2y + 2z = -1 \\
+        x + y - z = 0
+        \end{cases}$$
+        <p>Finding a solution means finding where all three flat planes share common coordinate points simultaneously.</p>
+
+        <div class="callout tip" style="margin: 22px 0;">
+          <div class="callout-title">The 6 Geometric Configurations of 3 Planes in ℝ³</div>
+          <p style="margin-bottom: 10px;">When 3 flat planes slice through 3-dimensional space, they must satisfy one of six geometric geometries:</p>
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:10px; margin-top:12px;">
+            <div style="background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 14px;">
+              <b style="color:var(--brand);">1. Unique Point (1 Sol)</b>
+              <div style="font-size:12.5px; color:var(--muted-2); margin-top:3px;">Planes meet at a single corner vertex $(x, y, z)$. $\det(A) \neq 0$.</div>
+            </div>
+            <div style="background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 14px;">
+              <b style="color:var(--amber);">2. Common Line (∞ Sols)</b>
+              <div style="font-size:12.5px; color:var(--muted-2); margin-top:3px;">All 3 planes intersect along an entire line (like pages of an open book).</div>
+            </div>
+            <div style="background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 14px;">
+              <b style="color:var(--red);">3. Triangular Prism (0 Sol)</b>
+              <div style="font-size:12.5px; color:var(--muted-2); margin-top:3px;">Pairwise lines are parallel; no single point lies on all 3 planes simultaneously.</div>
+            </div>
+            <div style="background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 14px;">
+              <b style="color:var(--red);">4. Two Parallel + Transversal (0 Sol)</b>
+              <div style="font-size:12.5px; color:var(--muted-2); margin-top:3px;">Two parallel floor/ceiling planes sliced diagonally by a third plane.</div>
+            </div>
+            <div style="background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 14px;">
+              <b style="color:var(--red);">5. Three Parallel Slices (0 Sol)</b>
+              <div style="font-size:12.5px; color:var(--muted-2); margin-top:3px;">Three parallel planes stacked like shelves with zero shared points.</div>
+            </div>
+            <div style="background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 14px;">
+              <b style="color:var(--amber);">6. Coincident Planes (∞ Sols)</b>
+              <div style="font-size:12.5px; color:var(--muted-2); margin-top:3px;">Two or all three equations represent the exact same plane.</div>
+            </div>
+          </div>
+          <p style="margin: 12px 0 0 0; font-size:13px; color:var(--muted);">Rotate, pan, and inspect each case in the real-time 3D dashboard below:</p>
+        </div>
+
+        <!-- Interactive Lab 1.4 -->
+        <div id="lab-3d-planes-dashboard"></div>
+
+        <!-- Interactive Lab 1.5 -->
+        <div id="lab-3d-arbitrary-solver"></div>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="chapter" id="sec-4" data-title="Theorem 1: Trichotomy">
+        <h2><span class="num">4</span> Theorem 1: Trichotomy for Linear Systems</h2>
+        <div class="callout theorem">
+          <div class="callout-title">Theorem 1 (Trichotomy for Linear Systems)</div>
+          <p>Every system of linear equations has either:</p>
+          <ol>
+            <li><b>No solutions</b> (Inconsistent)</li>
+            <li><b>Exactly one solution</b> (Consistent)</li>
+            <li><b>Infinitely many solutions</b> (Consistent)</li>
+          </ol>
+        </div>
+
+        <div class="callout ponder" data-ponder="m1-p2">
+          <div class="callout-title">🤔 Stop &amp; Ponder: Why can a system never have exactly 2 solutions?</div>
+          <p>If two distinct points satisfy a linear system, what must be true about the entire straight line connecting them?</p>
+          <div class="reveal" data-label="See Geometric Proof">
+            <div class="reveal-label">Geometric Proof</div>
+            <p>If points $\mathbf{p}_1$ and $\mathbf{p}_2$ both satisfy the equations, then any weighted point $t\mathbf{p}_1 + (1-t)\mathbf{p}_2$ also satisfies every plane constraint, immediately generating an entire continuum of infinitely many solutions!</p>
+          </div>
+        </div>
+
+        <!-- Interactive Lab 1.6 -->
+        <div id="lab-trichotomy-2d"></div>
+      </section>
+
+      <!-- Section 5 -->
+      <section class="chapter" id="sec-5" data-title="The Dual-Verse: Row vs Column">
+        <h2><span class="num">5</span> Why Linear Algebra? The Matrix Notation &amp; Dual-Verse</h2>
+        <p>Why do we package linear equations into $A\mathbf{x} = \mathbf{b}$? Because our visual intuition fails past 3 dimensions, but matrix algebra scales effortlessly to thousands of dimensions.</p>
+
+        $$\underbrace{\begin{bmatrix} 1 & 1 \\ -1 & 1 \end{bmatrix}}_{A} \underbrace{\begin{bmatrix} x \\ y \end{bmatrix}}_{\mathbf{x}} = \underbrace{\begin{bmatrix} 2 \\ 0 \end{bmatrix}}_{\mathbf{b}}$$
+
+        <p>Rewritten column by column, this gives the <b>Column Picture</b>:</p>
+        $$x \begin{bmatrix} 1 \\ -1 \end{bmatrix} + y \begin{bmatrix} 1 \\ 1 \end{bmatrix} = \begin{bmatrix} 2 \\ 0 \end{bmatrix}$$
+
+        <div class="cards two">
+          <div class="card blue">
+            <h4>📍 The Row Picture</h4>
+            <ul>
+              <li>Reads across rows as constraint lines/planes.</li>
+              <li>Variables $(x, y)$ are coordinates of a single point.</li>
+              <li>Objective: Find where lines cross.</li>
+            </ul>
+          </div>
+          <div class="card orange">
+            <h4>🎯 The Column Picture</h4>
+            <ul>
+              <li>Reads down columns as vector arrows.</li>
+              <li>Variables $(x, y)$ are scaling dials that stretch vectors.</li>
+              <li>Objective: Combine columns head-to-tail to hit target $\mathbf{b}$.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Interactive Lab 1.7 -->
+        <div id="lab-dual-verse"></div>
+      </section>
+
+      <!-- Section 6: Exercises & Code -->
+      <section class="chapter" id="sec-6" data-title="Assignments &amp; Code Lab">
+        <h2><span class="num">6</span> Assignments &amp; Code Challenges</h2>
+
+        <!-- Browser Code Lab 1 -->
+        <div id="lab-code-determinant"></div>
+
+        <!-- Self-Check Quiz -->
+        <div id="quiz-m1"></div>
+
+        <!-- Assignment Sheet -->
+        <div class="assign">
+          <h3>✍️ Pen-and-Paper Assignment &amp; Conceptual Analysis</h3>
+          <div class="q">
+            <h4>📝 Question 1: System Coincidence Analysis</h4>
+            <div class="given">2x - 3y = 6<br>4x - 6y = 12</div>
+            <ul>
+              <li><b>Task 1:</b> Attempt elimination or substitution. What happens to your variables?</li>
+              <li><b>Task 2:</b> Write the slope-intercept form ($y = mx + c$) for both lines.</li>
+              <li><b>Geometric Analysis:</b> Describe their physical layout and state the total number of solutions.</li>
+            </ul>
+          </div>
+          <div class="q">
+            <h4>📝 Question 2: System Construction</h4>
+            <div class="given">Baseline Equation: 3x + 2y = 5</div>
+            <ul>
+              <li><b>Task 1:</b> Write a second linear equation such that the system has exactly one unique solution at $(1, 1)$.</li>
+              <li><b>Task 2:</b> Write a second linear equation such that the system has zero solutions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="end-badge">
+          <span>✔ END OF MODULE 1 — CONTINUE TO MODULE 2 BELOW</span>
+        </div>
+      </section>
+
+      <!-- Bottom Pager -->
+      <nav id="pager"></nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    Newton School of Technology · Course in Linear Algebra (Mathematics-3) · Interactive Companion Laboratory
+  </footer>
+
+  <script src="assets/vendor/katex/katex.min.js"></script>
+  <script src="assets/vendor/katex/auto-render.min.js"></script>
+  <script src="assets/vendor/plotly.min.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/module1.js"></script>
+</body>
+</html>

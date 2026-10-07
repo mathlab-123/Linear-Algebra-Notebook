@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LA_Notebook_1.ipynb — Jupyter Notebook Interactive Showcase</title>
+  <link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/jupyter.css">
+</head>
+<body class="jupyter-mode" data-page="notebook">
+
+  <!-- Top Reading Progress Indicator -->
+  <div id="jp-reading-progress" class="jp-reading-progress"></div>
+
+  <!-- Jupyter Top Header -->
+  <header class="jp-header">
+    <div class="jp-header-top">
+      <div class="jp-logo-area">
+        <div class="jp-logo-icon">🪐</div>
+        <div class="jp-title-box">
+          <div class="jp-notebook-title">
+            <span>LA_Notebook_1.ipynb</span>
+            <span class="jp-notebook-badge">JupyterLab Showcase</span>
+          </div>
+          <div class="jp-kernel-status">
+            <span class="jp-kernel-dot"></span>
+            <span>Python 3 [conda env:base] · 94 Cells · Trusted · In-Browser Simulation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="jp-actions-area">
+        <button class="jp-btn" id="theme-toggle-btn" onclick="toggleDarkMode()" title="Toggle Dark/Light Mode">
+          <span>🌙 Dark</span>
+        </button>
+        <button class="jp-btn" onclick="openFormulaModal()" title="Quick Formula & Axiom Reference Sheet">
+          <span>📐 Formula Sheet</span>
+        </button>
+        <button class="jp-btn" onclick="window.print()" title="Print or save as clean PDF">
+          <span>🖨️ Print / PDF</span>
+        </button>
+        <a href="LA_Notebook_1.ipynb" download class="jp-btn primary" title="Download the original notebook file">
+          <span>📥 Download .ipynb</span>
+        </a>
+        <a href="https://colab.research.google.com/github/" target="_blank" class="jp-btn">
+          <span>🚀 Open in Colab</span>
+        </a>
+        <a href="index.html" class="jp-btn">
+          <span>📚 Course Portal</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Jupyter Action & Filter Toolbar -->
+  <div class="jp-toolbar">
+    <button class="jp-btn primary" onclick="runAllNotebookCells()" title="Simulate sequential execution of all 32 code cells">
+      <span>▶ Run All Cells</span>
+    </button>
+    <button class="jp-btn" id="toggle-all-code-btn" onclick="toggleAllCode()" title="Collapse or Expand all code inputs to read as textbook">
+      <span>▾ Fold All Code</span>
+    </button>
+    <button class="jp-btn" id="line-nums-btn" onclick="toggleLineNumbers()" title="Toggle Line Numbers on code blocks">
+      <span># Line Numbers</span>
+    </button>
+    <button class="jp-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">⬆ Top</button>
+    
+    <div style="display:flex; align-items:center; gap:6px; margin-left: 8px;">
+      <span style="font-size:12px; font-weight:700; color:#64748b;">Filter:</span>
+      <select id="jp-filter-select" class="jp-filter-select">
+        <option value="all">All 94 Cells</option>
+        <option value="code">Code Cells Only (32)</option>
+        <option value="markdown">Markdown Cells Only (62)</option>
+        <option value="widgets">Interactive Lab Cells (20)</option>
+      </select>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:6px; margin-left: 8px; flex: 1; max-width: 320px;">
+      <input type="text" id="jp-search-input" placeholder="🔍 Search notebook cells &amp; code..." style="width: 100%; padding: 5px 10px; font-size: 13px; border-radius: 6px; border: 1px solid var(--jp-border-color); background: var(--jp-canvas-bg); color: var(--jp-text-color); outline: none;">
+    </div>
+  </div>
+
+  <!-- Real-Time Execution Progress Bar -->
+  <div id="jp-exec-bar" class="jp-exec-bar">
+    <span id="jp-exec-status-label">Simulating execution...</span>
+    <span style="font-size:11px; opacity:0.8;">Jupyter Virtual Runtime</span>
+  </div>
+
+  <!-- Notebook Layout -->
+  <div class="jp-layout">
+    <!-- Left Sidebar Table of Contents & Bookmarks -->
+    <aside class="jp-sidebar">
+      <div class="jp-sidebar-tabs">
+        <button id="tab-toc" class="jp-sidebar-tab active">📑 Contents (94)</button>
+        <button id="tab-bookmarks" class="jp-sidebar-tab">⭐ Notes <span id="bookmarks-tab-count"></span></button>
+      </div>
+
+      <ul id="jp-toc-list" class="jp-toc-list">
+        <!-- Dynamically populated from notebook headings -->
+      </ul>
+
+      <ul id="jp-bookmarks-list" class="jp-toc-list" style="display: none;">
+        <!-- Dynamically populated from student's bookmarked cells and notes -->
+      </ul>
+    </aside>
+
+    <!-- Main Notebook Cells Canvas -->
+    <main class="jp-notebook-canvas">
+      <div id="jp-cells-container">
+        <!-- Rendered cell by cell dynamically -->
+        <div style="padding: 40px; text-align: center; color: #6b7280;">
+          Loading Jupyter Notebook cells...
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Formula & Axiom Quick Reference Sheet Modal -->
+  <div id="formula-modal" class="jp-modal-backdrop" onclick="if(event.target===this) closeFormulaModal()">
+    <div class="jp-modal-dialog">
+      <div class="jp-modal-header">
+        <h3 style="margin: 0; font-size: 18px; display: flex; align-items: center; gap: 8px;">
+          <span>📐</span> <span>Linear Algebra Exam Quick Reference Sheet</span>
+        </h3>
+        <button class="jp-btn" onclick="closeFormulaModal()">✕ Close</button>
+      </div>
+      <div class="jp-modal-body">
+        <p style="margin-top:0; color:#64748b; font-size:13.5px;">
+          Core mathematical theorems, formulas, and definitions from <b>LA_Notebook_1.ipynb</b> (Mathematics-3, Newton School of Technology).
+        </p>
+
+        <div class="jp-formula-grid">
+          <!-- Card 1: Trichotomy -->
+          <div class="jp-formula-card">
+            <h4>1. The Fundamental Trichotomy Theorem</h4>
+            <p style="font-size: 13px; margin: 4px 0;">Any linear system $Ax = b$ over $\mathbb{R}$ has strictly:</p>
+            <ul style="font-size: 12.5px; padding-left: 18px; margin: 4px 0;">
+              <li><b>Zero solutions:</b> Inconsistent system. Parallel distinct planes or lines with no mutual intersection point. $\text{rank}(A) < \text{rank}([A|b])$.</li>
+              <li><b>Exactly one unique solution:</b> Consistent independent system. $\det(A) \neq 0$, $\text{rank}(A) = \text{rank}([A|b]) = n$.</li>
+              <li><b>Infinitely many solutions:</b> Consistent dependent system. Planes intersect along an entire line or coincide. $\text{rank}(A) = \text{rank}([A|b]) < n$.</li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Row vs Column Dual-Verse -->
+          <div class="jp-formula-card">
+            <h4>2. Row-Verse vs Column-Verse</h4>
+            <p style="font-size: 12.5px; margin: 4px 0;">
+              <b>Row Picture:</b> Each equation represents a geometric hyperplane in $\mathbb{R}^n$. The solution is the point(s) where all hyperplanes intersect simultaneously.
+            </p>
+            <p style="font-size: 12.5px; margin: 4px 0;">
+              <b>Column Picture:</b> $x_1 \mathbf{a}_1 + x_2 \mathbf{a}_2 + \dots + x_n \mathbf{a}_n = \mathbf{b}$. Finding scalars to stretch and add column vectors to hit the target vector $\mathbf{b}$.
+            </p>
+          </div>
+
+          <!-- Card 3: Matrix Multiplication Views -->
+          <div class="jp-formula-card">
+            <h4>3. Matrix Multiplication (4 Perspectives)</h4>
+            <ul style="font-size: 12.5px; padding-left: 18px; margin: 4px 0;">
+              <li><b>Compatibility:</b> $(m \times k) \times (k \times n) = (m \times n)$. Inner dimensions must match!</li>
+              <li><b>Entry-wise:</b> $c_{ij} = \sum_{r=1}^k a_{ir} b_{rj}$ (Row $i$ dot Column $j$).</li>
+              <li><b>Column view:</b> Columns of $C$ are linear combinations of columns of $A$.</li>
+              <li><b>Row view:</b> Rows of $C$ are linear combinations of rows of $B$.</li>
+              <li><b>Outer Product view:</b> $C = \sum_{r=1}^k (\text{col}_r A)(\text{row}_r B)$.</li>
+            </ul>
+          </div>
+
+          <!-- Card 4: Vector Space Axioms -->
+          <div class="jp-formula-card">
+            <h4>4. 10 Vector Space Axioms</h4>
+            <p style="font-size: 12.5px; margin: 4px 0;">
+              For all $\mathbf{u}, \mathbf{v}, \mathbf{w} \in V$ and scalars $c, d \in \mathbb{R}$:
+            </p>
+            <ol style="font-size: 12px; padding-left: 18px; margin: 4px 0; columns: 2;">
+              <li>$\mathbf{u} + \mathbf{v} \in V$ (Closure $+ing$)</li>
+              <li>$\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}$</li>
+              <li>$(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})$</li>
+              <li>$\exists \mathbf{0} \in V : \mathbf{u} + \mathbf{0} = \mathbf{u}$</li>
+              <li>$\exists (-\mathbf{u}) : \mathbf{u} + (-\mathbf{u}) = \mathbf{0}$</li>
+              <li>$c\mathbf{u} \in V$ (Closure $\times$)</li>
+              <li>$c(\mathbf{u} + \mathbf{v}) = c\mathbf{u} + c\mathbf{v}$</li>
+              <li>$(c + d)\mathbf{u} = c\mathbf{u} + d\mathbf{u}$</li>
+              <li>$c(d\mathbf{u}) = (cd)\mathbf{u}$</li>
+              <li>$1\mathbf{u} = \mathbf{u}$</li>
+            </ol>
+          </div>
+
+          <!-- Card 5: Linear Independence & Span -->
+          <div class="jp-formula-card">
+            <h4>5. Linear Independence &amp; Span</h4>
+            <p style="font-size: 12.5px; margin: 4px 0;">
+              <b>Span:</b> $\text{Span}\{\mathbf{v}_1, \dots, \mathbf{v}_k\} = \{c_1\mathbf{v}_1 + \dots + c_k\mathbf{v}_k \mid c_i \in \mathbb{R}\}$.
+            </p>
+            <p style="font-size: 12.5px; margin: 4px 0;">
+              <b>Linear Independence:</b> The vectors are linearly independent if and only if $c_1\mathbf{v}_1 + \dots + c_k\mathbf{v}_k = \mathbf{0}$ has only the trivial solution $c_1 = \dots = c_k = 0$.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    Newton School of Technology · Linear Algebra Course (Mathematics-3) · Jupyter Notebook Showcase
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/vendor/katex/katex.min.js"></script>
+  <script src="assets/vendor/katex/auto-render.min.js"></script>
+  <script src="assets/vendor/plotly.min.js"></script>
+  <script src="assets/audio/mlk_audio.js"></script>
+  <script src="assets/js/core.js"></script>
+
+  <!-- Interactive Lab Engines for embedded outputs -->
+  <script src="assets/js/module1.js"></script>
+  <script src="assets/js/module2.js"></script>
+  <script src="assets/js/module3.js"></script>
+
+  <!-- Notebook Raw Data & Renderer -->
+  <script src="assets/notebook_data.js"></script>
+  <script src="assets/js/notebook_renderer.js"></script>
+</body>
+</html>

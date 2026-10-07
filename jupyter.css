@@ -1,0 +1,701 @@
+/* =====================================================================
+   M3 Linear Algebra — Authentic Jupyter Notebook Showcase Stylesheet
+   Supports Light & Dark mode, Python syntax highlighting, cell folding,
+   line numbers, student notes/bookmarks, formula drawer, and print layout.
+   ===================================================================== */
+:root {
+  --jp-layout-max: 1400px;
+  --jp-cell-prompt-width: 80px;
+  --jp-border-color: #e0e0e0;
+  --jp-cell-active-border: #2563eb;
+  --jp-in-prompt: #303f9f;
+  --jp-out-prompt: #d32f2f;
+  --jp-code-bg: #f8fafc;
+  --jp-code-color: #0f172a;
+  --jp-toolbar-bg: #ffffff;
+  --jp-topbar-bg: #f8fafc;
+  --jp-bg: #eef2f6;
+  --jp-canvas-bg: #ffffff;
+  --jp-text-color: #1f2937;
+  --jp-sidebar-bg: #ffffff;
+  --jp-input-header-bg: #f1f5f9;
+  --jp-code-border: #cbd5e1;
+  --jp-output-text-bg: #ffffff;
+}
+
+body.dark-mode {
+  --jp-bg: #090d16;
+  --jp-canvas-bg: #0f172a;
+  --jp-sidebar-bg: #131d31;
+  --jp-border-color: #1e293b;
+  --jp-cell-active-border: #38bdf8;
+  --jp-in-prompt: #818cf8;
+  --jp-out-prompt: #f87171;
+  --jp-code-bg: #0b1120;
+  --jp-code-color: #f1f5f9;
+  --jp-toolbar-bg: #0f172a;
+  --jp-topbar-bg: #0b1120;
+  --jp-text-color: #e2e8f0;
+  --jp-input-header-bg: #17223b;
+  --jp-code-border: #233354;
+  --jp-output-text-bg: #131d31;
+}
+
+body.jupyter-mode {
+  background-color: var(--jp-bg);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--jp-text-color);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Top Reading Progress Bar */
+.jp-reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #38bdf8, #6366f1, #ec4899);
+  width: 0%;
+  z-index: 1000;
+  transition: width 0.1s linear;
+}
+
+/* Jupyter Top Header */
+.jp-header {
+  background: var(--jp-topbar-bg);
+  border-bottom: 1px solid var(--jp-border-color);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.jp-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.jp-logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.jp-logo-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+  box-shadow: 0 2px 4px rgba(234, 88, 12, 0.3);
+}
+
+.jp-title-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.jp-notebook-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--jp-text-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.jp-notebook-badge {
+  font-size: 11px;
+  font-weight: 700;
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid #bae6fd;
+}
+
+body.dark-mode .jp-notebook-badge {
+  background: #082f49;
+  color: #38bdf8;
+  border-color: #0369a1;
+}
+
+.jp-kernel-status {
+  font-size: 12px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+body.dark-mode .jp-kernel-status {
+  color: #94a3b8;
+}
+
+.jp-kernel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+  display: inline-block;
+}
+
+.jp-actions-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Jupyter Action Toolbar */
+.jp-toolbar {
+  background: var(--jp-toolbar-bg);
+  border-bottom: 1px solid var(--jp-border-color);
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.jp-btn {
+  background: var(--jp-canvas-bg);
+  border: 1px solid var(--jp-border-color);
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--jp-text-color);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.jp-btn:hover {
+  background: var(--jp-input-header-bg);
+  border-color: var(--jp-cell-active-border);
+}
+
+.jp-btn.primary {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.jp-btn.primary:hover {
+  background: #1d4ed8;
+}
+
+.jp-btn.active {
+  background: #e0f2fe;
+  color: #0284c7;
+  border-color: #38bdf8;
+}
+
+body.dark-mode .jp-btn.active {
+  background: #082f49;
+  color: #38bdf8;
+  border-color: #0369a1;
+}
+
+.jp-filter-select {
+  padding: 5px 10px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid var(--jp-border-color);
+  background: var(--jp-canvas-bg);
+  color: var(--jp-text-color);
+  outline: none;
+}
+
+/* Execution Progress Banner */
+.jp-exec-bar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  background: #eff6ff;
+  border-bottom: 1px solid #bfdbfe;
+  padding: 6px 20px;
+  font-size: 12.5px;
+  color: #1e40af;
+  font-weight: 600;
+}
+
+body.dark-mode .jp-exec-bar {
+  background: #172554;
+  border-color: #1e3a8a;
+  color: #93c5fd;
+}
+
+.jp-exec-bar.active {
+  display: flex;
+}
+
+/* Notebook Layout */
+.jp-layout {
+  display: flex;
+  max-width: var(--jp-layout-max);
+  margin: 0 auto;
+  padding: 16px;
+  gap: 20px;
+}
+
+/* Sidebar ToC & Bookmarks */
+.jp-sidebar {
+  width: 290px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 105px;
+  height: calc(100vh - 125px);
+  overflow-y: auto;
+  background: var(--jp-sidebar-bg);
+  border: 1px solid var(--jp-border-color);
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.jp-sidebar-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--jp-border-color);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  gap: 8px;
+}
+
+.jp-sidebar-tab {
+  background: none;
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.jp-sidebar-tab.active {
+  color: #2563eb;
+  background: #eff6ff;
+}
+
+body.dark-mode .jp-sidebar-tab.active {
+  color: #38bdf8;
+  background: #082f49;
+}
+
+.jp-toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.jp-toc-item {
+  margin: 2px 0;
+}
+
+.jp-toc-link {
+  display: block;
+  font-size: 13px;
+  color: var(--jp-text-color);
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 6px;
+  line-height: 1.35;
+  transition: background 0.15s, color 0.15s;
+}
+
+.jp-toc-link:hover {
+  background: var(--jp-input-header-bg);
+  color: #2563eb;
+}
+
+.jp-toc-link.active {
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 700;
+}
+
+body.dark-mode .jp-toc-link.active {
+  background: #172554;
+  color: #60a5fa;
+}
+
+.jp-toc-badge {
+  font-size: 10px;
+  background: var(--jp-input-header-bg);
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: #64748b;
+  margin-right: 4px;
+}
+
+/* Notebook Canvas */
+.jp-notebook-canvas {
+  flex: 1;
+  min-width: 0;
+  background: var(--jp-canvas-bg);
+  border: 1px solid var(--jp-border-color);
+  border-radius: 10px;
+  padding: 28px 32px 100px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+
+/* Individual Cell */
+.jp-cell {
+  position: relative;
+  margin-bottom: 22px;
+  border-radius: 6px;
+  border-left: 4px solid transparent;
+  transition: border-left-color 0.15s, background-color 0.15s;
+}
+
+.jp-cell:hover, .jp-cell.active-cell {
+  border-left-color: var(--jp-cell-active-border);
+}
+
+.jp-cell-wrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.jp-prompt {
+  width: var(--jp-cell-prompt-width);
+  flex-shrink: 0;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  text-align: right;
+  padding-top: 8px;
+  user-select: none;
+}
+
+.jp-prompt.in-prompt {
+  color: var(--jp-in-prompt);
+}
+
+.jp-prompt.out-prompt {
+  color: var(--jp-out-prompt);
+}
+
+.jp-cell-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Markdown Cell */
+.jp-markdown-cell {
+  padding: 4px 6px 12px 4px;
+  line-height: 1.68;
+  color: var(--jp-text-color);
+  font-size: 15.5px;
+}
+
+.jp-markdown-cell img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Code Cell Input */
+.jp-input-area {
+  background: var(--jp-code-bg);
+  border: 1px solid var(--jp-code-border);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.jp-input-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 12px;
+  background: var(--jp-input-header-bg);
+  border-bottom: 1px solid var(--jp-code-border);
+  font-size: 12px;
+  color: #64748b;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+body.dark-mode .jp-input-header {
+  color: #94a3b8;
+}
+
+.jp-code-wrap {
+  display: flex;
+  position: relative;
+  overflow-x: auto;
+}
+
+.jp-line-numbers {
+  display: none;
+  width: 36px;
+  flex-shrink: 0;
+  padding: 10px 8px 10px 0;
+  background: var(--jp-input-header-bg);
+  border-right: 1px solid var(--jp-code-border);
+  color: #94a3b8;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.55;
+  text-align: right;
+  user-select: none;
+}
+
+body.show-line-numbers .jp-line-numbers {
+  display: block;
+}
+
+.jp-code-body {
+  margin: 0;
+  padding: 10px 14px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--jp-code-color);
+  overflow-x: auto;
+  white-space: pre;
+  flex: 1;
+}
+
+/* Python Syntax Highlighting */
+.jp-code-body .k { color: #cf222e; font-weight: 700; } /* keywords */
+.jp-code-body .f { color: #8250df; font-weight: 600; } /* funcs/libs */
+.jp-code-body .s { color: #0a7337; } /* strings */
+.jp-code-body .n { color: #0550ae; } /* numbers */
+.jp-code-body .c { color: #6e7781; font-style: italic; } /* comments */
+.jp-code-body .dec { color: #953800; font-weight: 800; } /* decorators */
+
+body.dark-mode .jp-code-body .k { color: #ff7b72; font-weight: 700; }
+body.dark-mode .jp-code-body .f { color: #d2a8ff; font-weight: 600; }
+body.dark-mode .jp-code-body .s { color: #7ee787; }
+body.dark-mode .jp-code-body .n { color: #79c0ff; }
+body.dark-mode .jp-code-body .c { color: #8b949e; font-style: italic; }
+body.dark-mode .jp-code-body .dec { color: #ffa657; font-weight: 800; }
+
+/* Code Cell Output */
+.jp-output-wrapper {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.jp-output-area {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 0;
+}
+
+.jp-output-text {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  background: var(--jp-output-text-bg);
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: var(--jp-text-color);
+  margin: 0 0 8px 0;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  border-left: 3px solid #cbd5e1;
+  border: 1px solid var(--jp-border-color);
+  border-left-width: 3px;
+}
+
+.jp-widget-container {
+  margin-top: 8px;
+}
+
+.jp-widget-container .lab {
+  margin: 0;
+}
+
+/* Cell folding */
+.jp-cell.collapsed-code .jp-code-wrap {
+  display: none !important;
+}
+
+.jp-cell.collapsed-output .jp-output-wrapper {
+  display: none !important;
+}
+
+/* Cell Bookmark & Notes */
+.jp-bookmark-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #94a3b8;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.jp-bookmark-btn.active {
+  color: #eab308;
+  text-shadow: 0 0 4px rgba(234, 179, 8, 0.4);
+}
+
+.jp-note-box {
+  display: none;
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: #fefce8;
+  border: 1px solid #fef08a;
+  border-left: 4px solid #eab308;
+  border-radius: 6px;
+}
+
+body.dark-mode .jp-note-box {
+  background: #1e1b4b;
+  border-color: #3730a3;
+  border-left-color: #818cf8;
+}
+
+.jp-note-box.open {
+  display: block;
+}
+
+.jp-note-textarea {
+  width: 100%;
+  min-height: 54px;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 13.5px;
+  color: inherit;
+  box-sizing: border-box;
+}
+
+/* Formula Modal */
+.jp-modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.jp-modal-backdrop.open {
+  display: flex;
+}
+
+.jp-modal-dialog {
+  background: var(--jp-canvas-bg);
+  width: 100%;
+  max-width: 900px;
+  max-height: 85vh;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--jp-border-color);
+}
+
+.jp-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--jp-border-color);
+  background: var(--jp-topbar-bg);
+}
+
+.jp-modal-body {
+  padding: 24px;
+  overflow-y: auto;
+  line-height: 1.6;
+}
+
+.jp-formula-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.jp-formula-card {
+  background: var(--jp-input-header-bg);
+  border: 1px solid var(--jp-border-color);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.jp-formula-card h4 {
+  margin: 0 0 6px 0;
+  font-size: 15px;
+  color: var(--jp-cell-active-border);
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .jp-sidebar {
+    display: none;
+  }
+  .jp-cell-prompt-width {
+    width: 48px;
+  }
+  .jp-prompt {
+    font-size: 11px;
+    width: 48px;
+  }
+  .jp-layout {
+    padding: 8px;
+  }
+  .jp-notebook-canvas {
+    padding: 16px 12px;
+  }
+}
+
+/* Print Friendly Stylesheet */
+@media print {
+  .jp-reading-progress, .jp-header, .jp-toolbar, .jp-sidebar, .jp-actions-area, .jp-exec-bar, .site-footer {
+    display: none !important;
+  }
+  body.jupyter-mode {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .jp-layout {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  .jp-notebook-canvas {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+  .jp-cell {
+    page-break-inside: avoid;
+    margin-bottom: 16px;
+  }
+  .jp-code-wrap {
+    overflow: visible !important;
+  }
+}

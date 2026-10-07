@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 2: Matrix Multiplication · M3 Interactive Lab</title>
+  <link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="m2">
+
+  <div class="layout">
+    <!-- Sticky Table of Contents -->
+    <aside class="toc" id="toc"></aside>
+
+    <!-- Main Content Area -->
+    <main class="content">
+
+      <!-- Module Hero -->
+      <header class="module-hero">
+        <span class="eyebrow">MODULE 02</span>
+        <h1>Matrix Multiplication</h1>
+        <p>Uncover the physical and structural intuition behind multiplying matrices. Moving from mechanical arithmetic to light synthesis, acoustic engineering, and pixel transformations.</p>
+        <div class="hero-goals">
+          <div>🎯 <b>Physical Systems:</b> Additive light mixing &amp; acoustic wave superposition.</div>
+          <div>🎯 <b>The Order Paradox:</b> Why $AB \neq BA$ and why inner dimensions must match.</div>
+          <div>🎯 <b>Transformation Position:</b> Why left multiplication acts on rows and right on columns.</div>
+        </div>
+      </header>
+
+      <!-- Section 1 -->
+      <section class="chapter" id="sec-1" data-title="Why Colors &amp; Sounds?">
+        <h2><span class="num">1</span> Why Colors &amp; Sounds? The Repeated Mathematical Move</h2>
+        
+        <div class="callout quote">
+          <p>"I cannot believe that anything so ugly as multiplication of matrices is an essential part of the scheme of nature." — <b>Arthur Eddington (1936)</b></p>
+          <p>"I see, I forget. I hear, I remember. I do, I understand." — <b>Confucius</b></p>
+        </div>
+
+        <div class="core-move">
+          "Scale objects of the same kind, then add them together."
+        </div>
+
+        <p>In standard algebra, matrix multiplication is introduced as a mechanical dot product: take row $i$, take column $j$, multiply and add. While computationally true, this obscures the underlying physical structure.</p>
+
+        <!-- Interactive Lab 2.1 -->
+        <div id="lab-rgb-studio"></div>
+
+        <!-- Interactive Lab 2.2 -->
+        <div id="lab-audio-superposition"></div>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="chapter" id="sec-2" data-title="Dimensional Compatibility">
+        <h2><span class="num">2</span> The Order Paradox &amp; Dimension Compatibility</h2>
+        <p>In scalar math, multiplication is commutative ($3 \times 5 = 5 \times 3$). In linear algebra, <b>matrix multiplication is non-commutative ($AB \neq BA$)</b>. Order dictates compatibility and life-or-death:</p>
+
+        $$(m \times \mathbf{n}) \times (\mathbf{p} \times q)$$
+
+        <p>Each row in $A$ has length $n$. Each column in $B$ has height $p$. If $n \neq p$, entries run out of partners during the dot product!</p>
+
+        <!-- Interactive Lab 2.3 -->
+        <div id="lab-dimension-compatibility"></div>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="chapter" id="sec-3" data-title="The Mul-Tea-Plication Kitchen">
+        <h2><span class="num">3</span> The "Mul-Tea-Plication" Kitchen: Column Tea vs. Row Tea</h2>
+        <p>To build an unforgettable intuition for matrix multiplication, step into a tea stall:</p>
+
+        <figure class="figure">
+          <img src="assets/img/column_way.png" alt="The Column Way: Mul-Tea-Plication" style="max-width: 820px;">
+          <figcaption>Figure 2.1: The Column Way: Matrix $A$ is the pantry jars of raw ingredients; vector $\mathbf{x}$ dictates proportions to brew a custom tea.</figcaption>
+        </figure>
+
+        <figure class="figure">
+          <img src="assets/img/row_way.png" alt="The Row Way: Mul-Tea-Plication" style="max-width: 820px;">
+          <figcaption>Figure 2.2: The Row Way: Jars are laid out horizontally, creating a row blend by linearly combining rows.</figcaption>
+        </figure>
+
+        <!-- Interactive Lab 2.4 -->
+        <div id="lab-tea-kitchen"></div>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="chapter" id="sec-4" data-title="Binary Images &amp; Shift Multipliers">
+        <h2><span class="num">4</span> Binary Images: What Does Matrix Multiplication Actually Do to an Image?</h2>
+        <p>A digital monochrome screen displays pictures as a grid of pixels: a binary matrix $X$ where <b>1</b> is a shaded black pixel and <b>0</b> is white background.</p>
+
+        <div class="callout insight">
+          <div class="callout-title">The Positional Rule of Matrix Multipliers</div>
+          <p>
+            • <b>Left multiplication ($P \cdot X$)</b> acts strictly on the <b>horizontal rows</b> (vertical motion: up, down, upside-down flip).<br>
+            • <b>Right multiplication ($X \cdot Q$)</b> acts strictly on the <b>vertical columns</b> (horizontal motion: left, right, mirror flip).
+          </p>
+        </div>
+
+        <!-- Interactive Lab 2.5 -->
+        <div id="lab-binary-image-studio"></div>
+      </section>
+
+      <!-- Section 5 -->
+      <section class="chapter" id="sec-5" data-title="Menu Matrix AB, Isomorphisms &amp; Invariants">
+        <h2><span class="num">5</span> From One Recipe to a Recipe Book: Matrix-Matrix Multiplication ($AB$)</h2>
+        <p>In the tea kitchen, we brewed a single cup using a single recipe vector $\mathbf{x}$ ($A \mathbf{x}$). What happens when a canteen prepares an entire menu of different dishes?</p>
+
+        <div style="display: flex; gap: 16px; margin: 18px 0; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 260px; background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: var(--radius-sm); padding: 16px;">
+            <h4 style="margin: 0 0 8px 0; color: var(--blue);">🏺 The Profile Matrix $A$</h4>
+            <p style="font-size: 13.5px; color: var(--muted); margin: 0; line-height: 1.5;">
+              Rows record measured nutritional properties; columns represent ingredients:
+              <br>• <b>Row 1:</b> Cost (₹)
+              <br>• <b>Row 2:</b> Calories (kcal)
+              <br>• <b>Row 3:</b> Protein (g)
+              <br>• <b>Columns:</b> Rice, Paneer, Vegetables
+            </p>
+          </div>
+
+          <div style="flex: 1; min-width: 260px; background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--amber); border-radius: var(--radius-sm); padding: 16px;">
+            <h4 style="margin: 0 0 8px 0; color: var(--amber);">📖 The Recipe Book Matrix $B$</h4>
+            <p style="font-size: 13.5px; color: var(--muted); margin: 0; line-height: 1.5;">
+              Multiple recipe column vectors placed side by side:
+              <br>• <b>Column 1:</b> Dish 1 (Rice &amp; Veg Bowl)
+              <br>• <b>Column 2:</b> Dish 2 (Paneer Fried Rice)
+              <br>• <b>Column 3:</b> Dish 3 (Paneer Stack)
+            </p>
+          </div>
+        </div>
+
+        <div class="callout tip">
+          <div class="callout-title">💡 Two Dual Views of the Exact Same Product $AB$:</div>
+          <p>
+            • <b>Columns of $AB$:</b> Each column represents one finished dish evaluated across all properties ($A \cdot \mathbf{cv}_j$).<br>
+            • <b>Rows of $AB$:</b> Each row tracks one property across the entire menu ($(\text{Row}_i A) \cdot B$).<br>
+            • <b>Dimensional Match:</b> $(\text{properties} \times \text{ingredients}) \times (\text{ingredients} \times \text{dishes}) = (\text{properties} \times \text{dishes})$.
+          </p>
+        </div>
+
+        <!-- Interactive Lab 2.6 -->
+        <div id="lab-canteen-menu-studio"></div>
+
+        <h3 style="margin-top: 28px;">The Mathematical Skeleton Survives: From Dish Menus to Color Palettes</h3>
+        <p>The physical objects change, but the underlying linear algebraic skeleton remains perfectly isomorphic:</p>
+
+        <div style="overflow-x: auto; margin: 16px 0; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-sm);">
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px; text-align: left;">
+            <thead>
+              <tr style="background: var(--bg); border-bottom: 2px solid var(--line);">
+                <th style="padding: 10px 14px; color: var(--ink);">Domain</th>
+                <th style="padding: 10px 14px; color: var(--ink);">Left Matrix ($A$ or $C$)</th>
+                <th style="padding: 10px 14px; color: var(--ink);">Right Matrix ($B$ or $D$)</th>
+                <th style="padding: 10px 14px; color: var(--ink);">Product ($AB$ or $CD$)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 10px 14px; font-weight: bold; color: var(--amber);">Canteen Kitchen</td>
+                <td style="padding: 10px 14px;">Ingredient profiles (properties $\times$ ingredients)</td>
+                <td style="padding: 10px 14px;">Dish recipes (ingredients $\times$ dishes)</td>
+                <td style="padding: 10px 14px; font-weight: bold;">Finished menu (properties $\times$ dishes)</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: bold; color: var(--blue);">Color Studio</td>
+                <td style="padding: 10px 14px;">Base-light profiles (RGB $\times$ base lights)</td>
+                <td style="padding: 10px 14px;">Palette recipes (base lights $\times$ swatches)</td>
+                <td style="padding: 10px 14px; font-weight: bold;">Finished palette (RGB $\times$ swatches)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Interactive Lab 2.7 -->
+        <div id="lab-color-palette-studio"></div>
+
+        <h3 style="margin-top: 28px;">Mathematical Invariants: Can Every Shape Be Reached by Permutations Alone?</h3>
+        <p>Suppose you are permitted to use only row-permutation and column-permutation matrices (no zero-inserting shifts). Can you transform the $2 \times 2$ center block into a plus shape?</p>
+
+        <div class="callout warning">
+          <div class="callout-title">🛡️ The Rigorous Invariant Proof</div>
+          <p>
+            • <b>Center Block $X_0$ row counts:</b> $[0, 2, 2, 0]$ (Multiset: $\{0, 0, 2, 2\}$).<br>
+            • <b>Plus-shaped target row counts:</b> $[0, 1, 2, 1]$ or $[1, 2, 1, 0]$ (Multiset contains $1$s).<br>
+            • <b>Conclusion:</b> Permutation matrices merely reorder rows and columns. They can <b>never</b> alter the multiset of row sums or column sums. Therefore, it is <b>mathematically impossible</b> to create the plus shape via permutations alone!
+          </p>
+        </div>
+
+        <h3 style="margin-top: 28px;">Scaling Up: The $8 \times 8$ Image Challenge</h3>
+        <p>
+          To shift a centered $4 \times 4$ block upward by $k$ rows and leftward by $k$ columns in an $8 \times 8$ frame:
+          <br>• $P_{\uparrow k} = U^k$ (shifts rows up by $k$ on the left).
+          <br>• $Q_{\leftarrow k} = L^k$ (shifts columns left by $k$ on the right).
+        </p>
+
+        <!-- Interactive Lab 2.8 -->
+        <div id="lab-8x8-studio"></div>
+      </section>
+
+      <!-- Section 6 -->
+      <section class="chapter" id="sec-6" data-title="Assignments &amp; Code Lab">
+        <h2><span class="num">6</span> Assignments &amp; Code Challenges</h2>
+
+        <!-- Code Lab 2 -->
+        <div id="lab-code-tea-recipe"></div>
+
+        <!-- Self-Check Quiz -->
+        <div id="quiz-m2"></div>
+
+        <!-- Assignment Sheet -->
+        <div class="assign">
+          <h3>✍️ Pen-and-Paper Assignment &amp; Conceptual Analysis</h3>
+          <div class="q">
+            <h4>📝 Question 1: Dimension Compatibility &amp; Operation Limits</h4>
+            <div class="given">A = [2 × 3] &nbsp;&nbsp;&nbsp;&nbsp; B = [3 × 3] &nbsp;&nbsp;&nbsp;&nbsp; C = [3 × 2]</div>
+            <ul>
+              <li><b>Task 1:</b> Which of the products exist: <code>AB</code>, <code>BA</code>, <code>AC</code>, and <code>CA</code>?</li>
+              <li><b>Task 2:</b> For those that exist, write the output matrix dimensions.</li>
+            </ul>
+          </div>
+          <div class="q">
+            <h4>📝 Question 2: Scalar Arithmetic Cost</h4>
+            <div class="given">A is 3×3 &nbsp;&nbsp;&nbsp;&nbsp; B is 3×2</div>
+            <ul>
+              <li><b>Task 1:</b> Compute $C = AB$ manually on paper.</li>
+              <li><b>Task 2:</b> How many total individual scalar multiplications were required? ($3 \times 3 \times 2 = 18$).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="end-badge">
+          <span>✔ END OF MODULE 2 — CONTINUE TO MODULE 3 BELOW</span>
+        </div>
+      </section>
+
+      <!-- Bottom Pager -->
+      <nav id="pager"></nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    Newton School of Technology · Course in Linear Algebra (Mathematics-3) · Interactive Companion Laboratory
+  </footer>
+
+  <script src="assets/vendor/katex/katex.min.js"></script>
+  <script src="assets/vendor/katex/auto-render.min.js"></script>
+  <script src="assets/audio/mlk_audio.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/module2.js"></script>
+</body>
+</html>

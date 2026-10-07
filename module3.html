@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 3: Vectors and their Properties · M3 Interactive Lab</title>
+  <link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="m3">
+
+  <div class="layout">
+    <!-- Sticky Table of Contents -->
+    <aside class="toc" id="toc"></aside>
+
+    <!-- Main Content Area -->
+    <main class="content">
+
+      <!-- Module Hero -->
+      <header class="module-hero">
+        <span class="eyebrow">MODULE 03</span>
+        <h1>Vectors and their Properties</h1>
+        <p>Unify vector notation across physics, computer science, and mathematics. Explore vector spaces, continuous subspace spans, and inverse column synthesis.</p>
+        <div class="hero-goals">
+          <div>🎯 <b>The 3 Perspectives:</b> Physics arrows, CS data arrays, and Math columns.</div>
+          <div>🎯 <b>Continuous Span:</b> Lines, planes, and volumes swept by vector combinations.</div>
+          <div>🎯 <b>Solving $Ax = b$:</b> Reaching target $\mathbf{b}$ through column synthesis.</div>
+        </div>
+      </header>
+
+      <!-- Section 1 -->
+      <section class="chapter" id="sec-1" data-title="Three Perspectives on Vectors">
+        <h2><span class="num">1</span> The Three Perspectives on a Single Vector</h2>
+        <p>When you encounter a vector in science and engineering, different disciplines describe it through different lenses, yet all three represent the exact same underlying mathematical reality:</p>
+
+        <div class="cards">
+          <div class="card blue">
+            <h4>🏹 1. Physics Perspective</h4>
+            <p><b>"An arrow with magnitude and direction."</b><br>
+            $\mathbf{v} = x\mathbf{i} + y\mathbf{j}$. Models displacement, velocity, and force in physical continuous space.</p>
+          </div>
+          <div class="card green">
+            <h4>💻 2. Computer Science Perspective</h4>
+            <p><b>"An ordered numerical array or list."</b><br>
+            $\mathbf{v} = [x, y]$. Stores structured features, weights, screen pixel offsets, or audio samples.</p>
+          </div>
+          <div class="card amber">
+            <h4>📐 3. Mathematics Perspective</h4>
+            <p><b>"An element of a vector space ($\mathbb{R}^2$)."</b><br>
+            $\mathbf{v} = \begin{bmatrix}x\\y\end{bmatrix}$. An object obeying axioms of vector addition and scalar scaling.</p>
+          </div>
+        </div>
+
+        <!-- Interactive Lab 3.1 -->
+        <div id="lab-vector-perspectives"></div>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="chapter" id="sec-2" data-title="Geometry of Addition &amp; Scaling">
+        <h2><span class="num">2</span> The Geometry of Addition and Scaling in $\mathbb{R}^2$</h2>
+        <p>No matter what domain we work in, linear algebra reduces to the exact same two algebraic actions:</p>
+
+        <div class="cards two">
+          <div class="card blue">
+            <h4>➡️ Method 1: Head-to-Tail Rule</h4>
+            <p>Draw vector $\mathbf{u}$ from the origin. Attach the tail of vector $\mathbf{v}$ directly to the head of $\mathbf{u}$. The sum $\mathbf{u} + \mathbf{v}$ points directly from the start of $\mathbf{u}$ to the tip of $\mathbf{v}$.</p>
+          </div>
+          <div class="card orange">
+            <h4>📐 Method 2: Parallelogram Law</h4>
+            <p>Root both vectors at the same origin. Complete the parallelogram. The main diagonal represents the resultant sum $\mathbf{u} + \mathbf{v}$.</p>
+          </div>
+        </div>
+
+        <!-- Interactive Lab 3.2 -->
+        <div id="lab-vector-addition"></div>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="chapter" id="sec-3" data-title="Combination vs. Span">
+        <h2><span class="num">3</span> Linear Combination vs. Span: One Point vs. The Entire Universe</h2>
+        
+        <div class="cards two">
+          <div class="card blue">
+            <h4>📍 Linear Combination (One Point)</h4>
+            <p>You lock in <b>one specific choice of weights</b>: $\mathbf{y} = c_1\mathbf{v}_1 + c_2\mathbf{v}_2$. It produces one single landing point.</p>
+          </div>
+          <div class="card green">
+            <h4>🌌 The Span (The Entire Universe)</h4>
+            <p>You allow weights $c_1, c_2$ to take <b>all possible real numbers</b>: $\text{Span}\{\mathbf{v}_1, \mathbf{v}_2\} = \{c_1\mathbf{v}_1 + c_2\mathbf{v}_2 \mid c_i \in \mathbb{R}\}$. It is the entire continuous territory swept out!</p>
+          </div>
+        </div>
+
+        <!-- Interactive Lab 3.3 -->
+        <div id="lab-2d-span"></div>
+
+        <!-- Interactive Lab 3.4 -->
+        <div id="lab-3d-span-lab"></div>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="chapter" id="sec-4" data-title="The Linear Alchemist Capstone">
+        <h2><span class="num">4</span> The Linear Alchemist: Cross-Domain Capstone Challenge</h2>
+        <p>Put everything into practice. Test your intuition of linear combinations, column synthesis ($A\mathbf{x} = \mathbf{b}$), and dimensional span across light, motion, and 3D space:</p>
+
+        <!-- Interactive Lab 3.5 -->
+        <div id="lab-linear-alchemist-game"></div>
+      </section>
+
+      <!-- Section 5 -->
+      <section class="chapter" id="sec-5" data-title="Assignments &amp; Code Lab">
+        <h2><span class="num">5</span> Assignments &amp; Code Challenges</h2>
+
+        <!-- Code Lab 3 -->
+        <div id="lab-code-vector-ops"></div>
+
+        <!-- Self-Check Quiz -->
+        <div id="quiz-m3"></div>
+
+        <!-- Assignment Sheet -->
+        <div class="assign">
+          <h3>✍️ Pen-and-Paper Assignment &amp; Conceptual Analysis</h3>
+          <div class="q">
+            <h4>📝 Question 1: Verifying Vector Space Axioms</h4>
+            <div class="given">u = [4, -2]ᵀ &nbsp;&nbsp;&nbsp;&nbsp; v = [-1, 5]ᵀ &nbsp;&nbsp;&nbsp;&nbsp; c = 3 &nbsp;&nbsp;&nbsp;&nbsp; d = -2</div>
+            <ul>
+              <li><b>Task 1:</b> Compute $c(\mathbf{u} + \mathbf{v})$ and $c\mathbf{u} + c\mathbf{v}$ manually to prove Vector Distributivity.</li>
+              <li><b>Task 2:</b> Compute $(c + d)\mathbf{u}$ and $c\mathbf{u} + d\mathbf{u}$ to prove Scalar Distributivity.</li>
+            </ul>
+          </div>
+          <div class="q">
+            <h4>📝 Question 2: Geometric Span &amp; Collinearity</h4>
+            <div class="given">v₁ = [1, 2]ᵀ &nbsp;&nbsp;&nbsp;&nbsp; v₂ = [3, 6]ᵀ</div>
+            <ul>
+              <li><b>Task 1:</b> Can you find scalars $c_1, c_2$ such that $c_1\mathbf{v}_1 + c_2\mathbf{v}_2 = [2, 5]^T$?</li>
+              <li><b>Geometric Analysis:</b> Why do $\mathbf{v}_1$ and $\mathbf{v}_2$ fail to span $\mathbb{R}^2$? Describe the exact 1D line subspace they create ($y = 2x$).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="end-badge">
+          <span>🎉 CONGRATULATIONS! ALL 3 MODULES COMPLETED!</span>
+        </div>
+      </section>
+
+      <!-- Bottom Pager -->
+      <nav id="pager"></nav>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    Newton School of Technology · Course in Linear Algebra (Mathematics-3) · Interactive Companion Laboratory
+  </footer>
+
+  <script src="assets/vendor/katex/katex.min.js"></script>
+  <script src="assets/vendor/katex/auto-render.min.js"></script>
+  <script src="assets/vendor/plotly.min.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/module3.js"></script>
+</body>
+</html>
