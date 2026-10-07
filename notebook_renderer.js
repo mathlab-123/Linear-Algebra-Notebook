@@ -37,11 +37,11 @@
   };
 
   const LOCAL_IMG_MAP = [
-    { match: 'Gemini-Generated-Image', local: 'assets/img/welcome.jpg' },
-    { match: 'types-of-solutions', local: 'assets/img/solutions_2var.jpg' },
-    { match: 'm-Ka-MMDb', local: 'assets/img/solutions_3var.jpg' },
-    { match: 'Screenshot-2026-07-27-at-11-56-14', local: 'assets/img/column_way.png' },
-    { match: 'Screenshot-2026-07-27-at-11-58-41', local: 'assets/img/row_way.png' }
+    { match: 'Gemini-Generated-Image', local: 'welcome.jpg', fallback: 'assets/img/welcome.jpg' },
+    { match: 'types-of-solutions', local: 'solutions_2var.jpg', fallback: 'assets/img/solutions_2var.jpg' },
+    { match: 'm-Ka-MMDb', local: 'solutions_3var.jpg', fallback: 'assets/img/solutions_3var.jpg' },
+    { match: 'Screenshot-2026-07-27-at-11-56-14', local: 'column_way.png', fallback: 'assets/img/column_way.png' },
+    { match: 'Screenshot-2026-07-27-at-11-58-41', local: 'row_way.png', fallback: 'assets/img/row_way.png' }
   ];
 
   function esc(s) {
@@ -54,7 +54,7 @@
 
     LOCAL_IMG_MAP.forEach(item => {
       if (s.includes(item.match)) {
-        s = s.replace(new RegExp(`src="[^"]*${item.match}[^"]*"`, 'g'), `src="${item.local}" onerror="this.src='${item.local}'"`);
+        s = s.replace(new RegExp(`src="[^"]*${item.match}[^"]*"`, 'g'), `src="${item.local}" onerror="this.onerror=null;this.src='${item.fallback}'"`);
       }
     });
 

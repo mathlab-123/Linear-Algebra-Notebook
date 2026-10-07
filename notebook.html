@@ -4,8 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LA_Notebook_1.ipynb — Jupyter Notebook Interactive Showcase</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <link rel="stylesheet" href="katex.min.css">
   <link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="jupyter.css">
   <link rel="stylesheet" href="assets/css/jupyter.css">
 </head>
 <body class="jupyter-mode" data-page="notebook">
@@ -205,19 +209,19 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="assets/vendor/katex/katex.min.js"></script>
-  <script src="assets/vendor/katex/auto-render.min.js"></script>
-  <script src="assets/vendor/plotly.min.js"></script>
-  <script src="assets/audio/mlk_audio.js"></script>
-  <script src="assets/js/core.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <script src="plotly.min.js" onerror="this.onerror=null;this.src='assets/vendor/plotly.min.js'"></script>
+  <script src="mlk_audio.js" onerror="this.onerror=null;this.src='assets/audio/mlk_audio.js'"></script>
+  <script src="core.js" onerror="this.onerror=null;this.src='assets/js/core.js'"></script>
 
   <!-- Interactive Lab Engines for embedded outputs -->
-  <script src="assets/js/module1.js"></script>
-  <script src="assets/js/module2.js"></script>
-  <script src="assets/js/module3.js"></script>
+  <script src="module1.js" onerror="this.onerror=null;this.src='assets/js/module1.js'"></script>
+  <script src="module2.js" onerror="this.onerror=null;this.src='assets/js/module2.js'"></script>
+  <script src="module3.js" onerror="this.onerror=null;this.src='assets/js/module3.js'"></script>
 
   <!-- Notebook Raw Data & Renderer -->
-  <script src="assets/notebook_data.js"></script>
-  <script src="assets/js/notebook_renderer.js"></script>
+  <script src="notebook_data.js" onerror="this.onerror=null;this.src='assets/notebook_data.js'"></script>
+  <script src="notebook_renderer.js" onerror="this.onerror=null;this.src='assets/js/notebook_renderer.js'"></script>
 </body>
 </html>

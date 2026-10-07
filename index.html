@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>M3 Linear Algebra — Interactive Course Laboratory</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <link rel="stylesheet" href="katex.min.css">
   <link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-page="home">
@@ -12,7 +15,7 @@
   <main class="home-wrap">
     <!-- Hero Banner with Welcome Image -->
     <div class="home-hero">
-      <img src="assets/img/welcome.jpg" alt="Welcome to Linear Algebra &amp; Jupyter Notebooks">
+      <img src="welcome.jpg" onerror="this.onerror=null;this.src='assets/img/welcome.jpg'" alt="Welcome to Linear Algebra &amp; Jupyter Notebooks">
       <div class="overlay">
         <span class="tag">Newton School of Technology · Batch 2026–27</span>
         <h1>Mathematics-3: Linear Algebra Interactive Laboratory</h1>
@@ -185,9 +188,9 @@
     Newton School of Technology · Course in Linear Algebra (Mathematics-3) · Interactive Companion Laboratory
   </footer>
 
-  <script src="assets/vendor/katex/katex.min.js"></script>
-  <script src="assets/vendor/katex/auto-render.min.js"></script>
-  <script src="assets/vendor/plotly.min.js"></script>
-  <script src="assets/js/core.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <script src="plotly.min.js" onerror="this.onerror=null;this.src='assets/vendor/plotly.min.js'"></script>
+  <script src="core.js" onerror="this.onerror=null;this.src='assets/js/core.js'"></script>
 </body>
 </html>

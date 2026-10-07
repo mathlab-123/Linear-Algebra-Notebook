@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Module 2: Matrix Multiplication · M3 Interactive Lab</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <link rel="stylesheet" href="katex.min.css">
   <link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-page="m2">
@@ -69,12 +72,12 @@
         <p>To build an unforgettable intuition for matrix multiplication, step into a tea stall:</p>
 
         <figure class="figure">
-          <img src="assets/img/column_way.png" alt="The Column Way: Mul-Tea-Plication" style="max-width: 820px;">
+          <img src="column_way.png" onerror="this.onerror=null;this.src='assets/img/column_way.png'" alt="The Column Way: Mul-Tea-Plication" style="max-width: 820px;">
           <figcaption>Figure 2.1: The Column Way: Matrix $A$ is the pantry jars of raw ingredients; vector $\mathbf{x}$ dictates proportions to brew a custom tea.</figcaption>
         </figure>
 
         <figure class="figure">
-          <img src="assets/img/row_way.png" alt="The Row Way: Mul-Tea-Plication" style="max-width: 820px;">
+          <img src="row_way.png" onerror="this.onerror=null;this.src='assets/img/row_way.png'" alt="The Row Way: Mul-Tea-Plication" style="max-width: 820px;">
           <figcaption>Figure 2.2: The Row Way: Jars are laid out horizontally, creating a row blend by linearly combining rows.</figcaption>
         </figure>
 
@@ -240,10 +243,10 @@
     Newton School of Technology · Course in Linear Algebra (Mathematics-3) · Interactive Companion Laboratory
   </footer>
 
-  <script src="assets/vendor/katex/katex.min.js"></script>
-  <script src="assets/vendor/katex/auto-render.min.js"></script>
-  <script src="assets/audio/mlk_audio.js"></script>
-  <script src="assets/js/core.js"></script>
-  <script src="assets/js/module2.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <script src="mlk_audio.js" onerror="this.onerror=null;this.src='assets/audio/mlk_audio.js'"></script>
+  <script src="core.js" onerror="this.onerror=null;this.src='assets/js/core.js'"></script>
+  <script src="module2.js" onerror="this.onerror=null;this.src='assets/js/module2.js'"></script>
 </body>
 </html>
